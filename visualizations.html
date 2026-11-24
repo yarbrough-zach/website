@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizations | Zach Yarbrough</title>
+  <meta name="description" content="Figures from Zach Yarbrough's gravitational-wave detector characterization research.">
+  <link rel="canonical" href="https://zachyarbrough.com/visualizations.html">
+  <meta property="og:title" content="Visualizations | Zach Yarbrough">
+  <meta property="og:description" content="Figures from Zach Yarbrough's gravitational-wave detector characterization research.">
+  <meta property="og:image" content="https://zachyarbrough.com/assets/img/headshot.jpg">
+  <meta property="og:url" content="https://zachyarbrough.com/visualizations.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Work+Sans:wght@400;500;600&family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>try{var t=localStorage.getItem("zy-theme");if(t&&t!=="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zach Yarbrough</a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Overview</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="visualizations.html" aria-current="page">Visualizations</a>
+      <a href="outreach.html">Teaching &amp; Outreach</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <section class="hero" style="padding-bottom:0">
+      <p class="eyebrow">Visualizations</p>
+      <h1>Figures from the work</h1>
+      <p class="narrow muted">Selected figures from my papers, with plain-language captions. Each one links to the paper it comes from.</p>
+    </section>
+
+    <section>
+      <h2>How glitches reach a search (PINCH)</h2>
+      <figure class="fig">
+        <img src="assets/fig/pinch_nu_line_plot_L1.png" alt="Line plots over O3b of the number of search triggers caused by each glitch class at LIGO Livingston, above the number of occurrences of each glitch class." loading="lazy" width="1800" height="1334">
+        <figcaption><b>Glitch occurrences and the triggers they cause, over O3b at LIGO Livingston.</b> Trigger counts mostly follow how often a glitch occurs. Some classes, such as Extremely Loud, Koi Fish and Tomte, couple to the search consistently, while scattered-light glitches vary with time.</figcaption>
+      </figure>
+      <div class="figs-2">
+        <figure class="fig">
+          <img src="assets/fig/pinch_nu_combo_svm_distribution_chunk30.png" alt="Histograms of support vector machine scores for triggers overlapping glitches at Hanford and Livingston, with a threshold at score 1." loading="lazy" width="1800" height="796">
+          <figcaption><b>Separating glitch triggers from ordinary noise.</b> SVM scores for triggers that overlap glitches. Scores above 1 mean a trigger looks unlike those from clean data, so it was likely caused by the glitch.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="assets/fig/pinch_new_overrep_combined_both.png" alt="Bar charts of over-representation ratio by glitch class and by search category for both LIGO detectors." loading="lazy" width="1800" height="963">
+          <figcaption><b>Which glitches punch above their weight.</b> Over-representation ratio by glitch class, overall and split by BNS, NSBH and BBH searches. Blips matter most for BBH searches, while Fast Scattering and Extremely Loud glitches matter most for BNS searches.</figcaption>
+        </figure>
+      </div>
+      <figure class="fig">
+        <img src="assets/fig/pinch_nu_pbp_L1_snr_100_o3b.png" alt="Stacked SNR histogram of glitch-induced triggers at LIGO Livingston, each bin colored by the share of each glitch class." loading="lazy" width="1800" height="751">
+        <figcaption><b>Which glitches make loud triggers.</b> SNR distribution of glitch-induced triggers at Livingston over O3b, colored by glitch class. Tomte dominates at moderate SNR, while Extremely Loud and Koi Fish glitches make up most of the loudest triggers. All PINCH figures are from <a href="https://doi.org/10.1088/1361-6382/adf58c">Yarbrough et al. 2025, CQG</a>.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Real-time detector characterization (sgnax)</h2>
+      <figure class="fig">
+        <img src="assets/fig/sgnax_gpu_capacity.png" alt="Plots of real-time factor against number of channels for CPU and GPU execution, and aggregate real-time factor for multiple processes sharing one GPU." loading="lazy" width="1018" height="394">
+        <figcaption><b>An entire auxiliary channel list on one GPU.</b> Streaming real-time factor of the sgnax Q-transform on one NVIDIA V100. Splitting the channel list across four processes analyzes 792 production auxiliary channels faster than real time.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="assets/fig/sgnax_channel_scaling.png" alt="Log-log plots of wall-clock cost per channel-second and peak memory against the number of channels analyzed." loading="lazy" width="1018" height="393">
+        <figcaption><b>Channels get cheaper in bulk.</b> Because every branch shares one data-read and whitening front end, the cost per channel drops as channels are added: 2.8 times lower for the Q-transform at 32 channels than at one. From <a href="https://arxiv.org/abs/2608.09804">Yarbrough et al. 2026</a>.</figcaption>
+      </figure>
+    </section>
+  </div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Zach Yarbrough · Baton Rouge, LA <span class="insert-coin">· INSERT COIN</span></span>
+    <div class="theme-switch" role="group" aria-label="Theme">
+      <button type="button" data-theme="classic">Classic</button>
+      <button type="button" data-theme="shag">Shag</button>
+      <button type="button" data-theme="arcade">Arcade</button>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

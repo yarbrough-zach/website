@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zach Yarbrough | Gravitational-Wave Physicist</title>
+  <meta name="description" content="Zach Yarbrough is a PhD candidate at Louisiana State University and a member of the LIGO Scientific Collaboration, working on detector characterization and low-latency gravitational-wave searches.">
+  <link rel="canonical" href="https://zachyarbrough.com/">
+  <meta property="og:title" content="Zach Yarbrough | Gravitational-Wave Physicist">
+  <meta property="og:description" content="Detector characterization and low-latency gravitational-wave searches with LIGO.">
+  <meta property="og:image" content="https://zachyarbrough.com/assets/img/headshot.jpg">
+  <meta property="og:url" content="https://zachyarbrough.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Work+Sans:wght@400;500;600&family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>try{var t=localStorage.getItem("zy-theme");if(t&&t!=="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zach Yarbrough",
+    "url": "https://zachyarbrough.com/",
+    "image": "https://zachyarbrough.com/assets/img/headshot.jpg",
+    "jobTitle": "PhD Candidate",
+    "affiliation": [
+      {"@type": "CollegeOrUniversity", "name": "Louisiana State University"},
+      {"@type": "Organization", "name": "LIGO Scientific Collaboration"}
+    ],
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Oklahoma"},
+    "knowsAbout": ["Gravitational-wave astronomy", "Detector characterization", "Data quality", "Compact binary coalescence searches", "GstLAL", "GPU computing"]
+  }
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zach Yarbrough</a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="visualizations.html">Visualizations</a>
+      <a href="outreach.html">Teaching &amp; Outreach</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Gravitational-wave astronomy · LIGO</p>
+        <h1>Zach Yarbrough</h1>
+        <p class="role">PhD Candidate, Physics &amp; Astronomy, Louisiana State University</p>
+        <p class="lede">I build low-latency tools that detect gravitational waves and monitor the state of the LIGO detectors in real time. Much of that work is on <a href="research.html#sgnl">sgnl</a>, the successor to the GstLAL search, which I help operate as it looks for merging black holes and neutron stars within seconds of the data arriving. My work connects instrumental noise to the significance a search assigns to a candidate signal, so that searches stay sensitive and statistically reliable as the detectors change.</p>
+        <p class="muted">I am a member of the LIGO Scientific Collaboration, advised by Gabriela González. I expect to finish my PhD in summer 2027.</p>
+        <div class="cta">
+          <a class="btn primary" href="research.html">Research</a>
+          <a class="btn" href="publications.html">Publications</a>
+          <a class="btn" data-email data-user="zacharylyarbrough" data-domain="gmail.com" href="#">Email me</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="assets/img/headshot.jpg" alt="Zach Yarbrough in the LIGO Livingston control room" width="1200" height="1093">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <ul class="facts">
+      <li><b>3</b><span>first-author journal papers, including <i>sgnax</i>, accepted in PRD</span></li>
+      <li><b>30+</b><span>LIGO–Virgo–KAGRA collaboration papers since 2023</span></li>
+      <li><b>794</b><span>auxiliary channels analyzed in real time on one GPU</span></li>
+      <li><b>O4</b><span>Deputy data-quality shift coordinator, 2023–2025</span></li>
+    </ul>
+
+    <section>
+      <h2>What I work on</h2>
+      <div class="grid grid-4">
+        <article class="card">
+          <p class="tag">Searches</p>
+          <h3>Finding gravitational waves in low latency</h3>
+          <p>I help develop and operate <a href="research.html#sgnl">sgnl</a>, the successor to the GstLAL compact-binary search, running its low-latency analysis to find gravitational-wave signals within seconds of the data arriving.</p>
+        </article>
+        <article class="card">
+          <p class="tag">Detector characterization</p>
+          <h3>Measuring detector noise as the data arrive</h3>
+          <p>I lead development of <a href="research.html#sgnax">sgnax</a>, a streaming pipeline that runs matched-filter and excess-power transient searches on the strain and auxiliary channels at once, on CPUs or GPUs.</p>
+        </article>
+        <article class="card">
+          <p class="tag">Detchar × Searches</p>
+          <h3>Where noise meets the search</h3>
+          <p>My work sits where these two fields overlap. With <a href="research.html#pinch">PINCH</a>, I trace which glitches produce search triggers and where they land in parameter space, and I study how drift in sgnl's noise background changes how significant a candidate looks.</p>
+        </article>
+        <article class="card">
+          <p class="tag">Next</p>
+          <h3>Teaching searches when to forget</h3>
+          <p>My proposed research is an adaptive noise background that drops disturbances that no longer describe the detector, without losing reliable false-alarm estimates. <a href="research.html#next">Read more</a>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected publications</h2>
+      <ul class="pubs">
+        <li>
+          <span class="yr">2026</span>
+          <div>
+            <div class="t">sgnax: a unified matched-filter and excess-power pipeline for gravitational-wave detector characterization <span class="badge">first author</span></div>
+            <div class="a"><span class="me">Yarbrough</span>, Godwin, Davis, and González</div>
+            <div class="v">Accepted in Physical Review D · <a href="https://arxiv.org/abs/2608.09804">arXiv:2608.09804</a></div>
+          </div>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <div>
+            <div class="t">PINCH: Pipeline-Informed Noise Characterization in LIGO's Third Observing Run <span class="badge">first author</span></div>
+            <div class="a"><span class="me">Yarbrough</span>, Guimaraes, Joshi, González, and Valentini</div>
+            <div class="v"><a href="https://doi.org/10.1088/1361-6382/adf58c">Classical and Quantum Gravity 42, 165014</a></div>
+          </div>
+        </li>
+        <li>
+          <span class="yr">2026</span>
+          <div>
+            <div class="t">Fisher Information Velocity: A New Geometric Channel for Precision Glitch Identification in Gravitational-Wave Detectors</div>
+            <div class="a">Kennington and <span class="me">Yarbrough</span></div>
+            <div class="v"><a href="https://doi.org/10.1103/9mr6-7vts">Physical Review D 114, 044083</a></div>
+          </div>
+        </li>
+      </ul>
+      <p style="margin-top:16px"><a href="publications.html">All publications →</a></p>
+    </section>
+
+    <section>
+      <h2>Recognition</h2>
+      <ul class="timeline">
+        <li><span class="when">2024</span><div><b>LIGO Laboratory Award for Excellence in Detector Characterization and Calibration</b>Honorable mention for PINCH</div></li>
+        <li><span class="when">2023</span><div><b>Outstanding Teaching Assistant</b>LSU Department of Physics and Astronomy</div></li>
+        <li><span class="when">2023</span><div><b>Third Place, Physical Sciences</b>LSU Graduate Research Conference</div></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Zach Yarbrough · Baton Rouge, LA <span class="insert-coin">· INSERT COIN</span></span>
+    <div class="theme-switch" role="group" aria-label="Theme">
+      <button type="button" data-theme="classic">Classic</button>
+      <button type="button" data-theme="shag">Shag</button>
+      <button type="button" data-theme="arcade">Arcade</button>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

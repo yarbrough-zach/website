@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research | Zach Yarbrough</title>
+  <meta name="description" content="Research by Zach Yarbrough: streaming detector characterization (sgnax), pipeline-informed noise characterization (PINCH), and adaptive noise backgrounds for gravitational-wave searches.">
+  <link rel="canonical" href="https://zachyarbrough.com/research.html">
+  <meta property="og:title" content="Research | Zach Yarbrough">
+  <meta property="og:description" content="Research by Zach Yarbrough: streaming detector characterization (sgnax), pipeline-informed noise characterization (PINCH), and adaptive noise backgrounds for gravitational-wave searches.">
+  <meta property="og:image" content="https://zachyarbrough.com/assets/img/headshot.jpg">
+  <meta property="og:url" content="https://zachyarbrough.com/research.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Work+Sans:wght@400;500;600&family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>try{var t=localStorage.getItem("zy-theme");if(t&&t!=="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zach Yarbrough</a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Overview</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="visualizations.html">Visualizations</a>
+      <a href="outreach.html">Teaching &amp; Outreach</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <section class="hero" style="padding-bottom:0">
+      <p class="eyebrow">Research</p>
+      <h1>Keeping gravitational-wave searches reliable as the detectors change</h1>
+      <div class="narrow">
+        <p class="lede">A search judges a candidate partly by comparing it with a record of past instrumental disturbances. That record guards against false discoveries, but a disturbance that disappeared months ago can still make a real merger look unconvincing today. My research asks how searches can stay sensitive and statistically reliable as the instruments producing their data change.</p>
+        <p>I work on both sides of that problem: tools that measure detector noise as the data arrive, and studies of how that noise shows up in the search and in the significance of candidates. This matters most for multimessenger astronomy, where a faint merger has to be recognized quickly enough for telescopes to look for its light.</p>
+      </div>
+    </section>
+
+    <section id="sgnax">
+      <h2>Measuring detector noise as the data arrive</h2>
+      <div class="narrow">
+        <p>I lead development of <b>sgnax</b>, an open-source streaming pipeline for detector characterization. It runs a sine-Gaussian matched-filter search (the approach of the earlier <i>snax</i>) and a multi-resolution Q-transform excess-power search (the approach of <i>Omicron</i>) from one dataflow graph built on the Stream Graph Navigator (SGN) framework. Building on snax, I wrote nearly all of the new implementation and added the Q-transform analysis.</p>
+        <ul>
+          <li>On 24 hours of archival LIGO strain, sgnax reproduces the production Omicron trigger count to 0.1%, with per-trigger SNRs matching at the percent level.</li>
+          <li>The matched-filter mode delivers triggers about five seconds after the data are recorded.</li>
+          <li>Four processes sharing one NVIDIA V100 analyze 792 production auxiliary channels at 1.11× real time.</li>
+        </ul>
+      </div>
+      <figure class="fig">
+        <img src="assets/fig/sgnax_strain_comparison_1jan.png" alt="Three time-frequency scatter plots of a day of LIGO Livingston triggers, from Omicron, sgnax-qtransform and sgnax-extract, showing nearly identical trigger populations." loading="lazy" width="1600" height="1632">
+        <figcaption><b>One day of LIGO Livingston glitches, three ways.</b> Triggers on calibrated strain for 1 January 2025, colored by SNR: production Omicron (top), the sgnax Q-transform mode configured to match it (middle), and the sgnax matched-filter mode (bottom). From <a href="https://arxiv.org/abs/2608.09804">Yarbrough et al. 2026</a>.</figcaption>
+      </figure>
+      <div class="narrow">
+        <p>I also lead development of streaming replacements for other detector-characterization infrastructure: data-quality flags for rapid searches, inspiral-range monitoring, and noise subtraction using auxiliary witness channels. I validate them against the production tools through archival replay and injected signals. As deputy data-quality shift coordinator during O4, I also took part in the operational decisions about gravitational-wave candidates.</p>
+      </div>
+    </section>
+
+    <section id="pinch">
+      <h2>Connecting noise to search significance</h2>
+      <div class="narrow">
+        <p><b>PINCH</b> (Pipeline-Informed Noise CHaracterization) looks at glitches from the point of view of the search. A one-class support vector machine is trained on GstLAL triggers from clean data and then scores triggers that overlap glitches, which separates triggers caused by glitches from those caused by ordinary noise. Applied to the second half of O3, it shows which glitch classes reach the search, where they land in its parameter space, and how consistent that is over time.</p>
+      </div>
+      <figure class="fig">
+        <img src="assets/fig/pinch_m1m2_scatter_kde_28.png" alt="Scatter and contour plots of component masses for glitch-induced triggers at LIGO Hanford and Livingston, colored by glitch class." loading="lazy" width="1800" height="1451">
+        <figcaption><b>Where glitches land among the templates.</b> Component masses of glitch-induced triggers at Hanford (left) and Livingston (right), colored by Gravity Spy class. They cluster at low, equal masses where the template bank is densest, but some classes reach far into high mass ratios. From <a href="https://doi.org/10.1088/1361-6382/adf58c">Yarbrough et al. 2025, CQG</a>.</figcaption>
+      </figure>
+      <div class="narrow">
+        <p>PINCH received an honorable mention for the 2024 LIGO Laboratory Award for Excellence in Detector Characterization and Calibration. I am now extending it to environmental data, studying how ground motion at LIGO Livingston couples into the search's trigger population. So far, contamination tends to be concentrated in a few episodes, and similar ground-motion amplitudes do not always produce similar search responses.</p>
+        <p id="sgnl">I contribute to the development and operation of the <b>GstLAL</b> compact-binary search, including low-latency monitoring, candidate SNR optimization and using Virgo data for sky localization. I also contribute to its successor, <b>sgnl</b>, through code development and the online mock data challenges central to its review. I will be one of the primary operators of sgnl's low-latency search during the upcoming IR1 observing run. In a 40-day replay of sgnl with a production configuration, I measure how its noise model drifts across template groups. That separates the slow relaxation of the estimator from changes caused by individual disturbances.</p>
+      </div>
+    </section>
+
+    <section id="next">
+      <h2>Next: an adaptive noise background</h2>
+      <div class="narrow">
+        <p>As observing becomes longer and more continuous, a search has to tell the noise that matters for a candidate now apart from disturbances that piled up months earlier. A spring candidate can be judged against elevated scattered-light noise from the previous fall. My proposed research is to teach searches when to forget:</p>
+        <ul>
+          <li>Store background contributions in time-tagged blocks, with detector state attached, so they can be reweighted or removed and then restored.</li>
+          <li>Use low-latency detector characterization (sgnax, PINCH, environmental sensors) to decide when a noise population has appeared, gone away or come back.</li>
+          <li>Recalibrate false-alarm rates with the same adaptive procedure, and test the method on chronological replays with injections and held-out data.</li>
+          <li>Use GPU acceleration to make frequent background updates affordable in a continuously running search.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="software">
+      <h2>Software</h2>
+      <div class="grid">
+        <article class="card"><p class="tag">Lead developer</p><h3>sgnax</h3><p>Streaming matched-filter and Q-transform transient detection for strain and auxiliary channels, on CPUs and GPUs.</p></article>
+        <article class="card"><p class="tag">Lead developer</p><h3>PINCH</h3><p>Machine-learning package for studying how transient noise appears in the output of search pipelines.</p></article>
+        <article class="card"><p class="tag">Lead developer</p><h3>dq-genesis · lone-ranger · nomad</h3><p>Streaming data-quality flags, inspiral-range monitoring and witness-channel noise subtraction.</p></article>
+        <article class="card"><p class="tag">Contributor</p><h3>sgnl · GstLAL · SGN</h3><p>Low-latency compact-binary searches and the stream-processing framework they are built on.</p></article>
+        <article class="card"><p class="tag">Contributor</p><h3>DQRbuild</h3><p>Data Quality Report Builder, which automatically investigates detector data around gravitational-wave candidates.</p></article>
+      </div>
+    </section>
+
+    <section id="previous">
+      <h2>Earlier research</h2>
+      <ul class="timeline">
+        <li><span class="when">2019–2022</span><div><b>Supernova spectroscopy, University of Oklahoma</b>Reduced spectra from the Apache Point Observatory 3.5 m telescope and modeled them with SYNOW. This led to a first-author <a href="https://doi.org/10.1093/mnras/stad758">MNRAS paper on SN 2019ein</a>, a broad-line Type Ia supernova, and its connection to SN 2011fe.</div></li>
+        <li><span class="when">Summer 2021</span><div><b>Advanced Virgo, University of Padova (UF IREU)</b>Developed and tested particle-imaging methods for characterizing dust in Virgo clean rooms.</div></li>
+        <li><span class="when">2020–2022</span><div><b>NASA GeoCarb mission</b>Designed and built an optical demonstration of the GeoCarb payload and modeled its source and filter responses.</div></li>
+        <li><span class="when">2019–2022</span><div><b>MATHUSLA, high-energy physics</b>Tested scintillator and silicon-photomultiplier configurations for the search for long-lived particles.</div></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Zach Yarbrough · Baton Rouge, LA <span class="insert-coin">· INSERT COIN</span></span>
+    <div class="theme-switch" role="group" aria-label="Theme">
+      <button type="button" data-theme="classic">Classic</button>
+      <button type="button" data-theme="shag">Shag</button>
+      <button type="button" data-theme="arcade">Arcade</button>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
